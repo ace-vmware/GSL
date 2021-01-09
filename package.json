@@ -1,0 +1,36 @@
+{
+  "name": "gslwebpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "12.19.0"
+  },
+  "scripts": {
+    "dev": "webpack serve",
+    "start": "node ./dist/server.js",
+    "build": "webpack --mode production"
+  },
+  "author": "Adam Evancho",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "planer": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "copy-webpack-plugin": "^6.3.1",
+    "dotenv-webpack": "^5.1.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "heroku-run-build-script": true
+}

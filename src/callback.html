@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.7.0/jsforce.min.js"></script>
+    <script>
+        // OLD CREDENTIAL FOR OTHER APP
+        jsforce.browser.init({
+        clientId: "3MVG9uudbyLbNPZPdIz.uqzF0wyw8jpFz_Tc7l.za7mCCK3UIu3PDncF6_5j98u8p9Xeo89S83jDB_jUcsuaR",
+        redirectUri: "http://localhost:8080/callback.html",
+        proxyUrl: "https://node-salesforce-proxy.herokuapp.com/proxy/"
+        });
+
+        // new credential
+        // jsforce.browser.init({
+        //     clientId: "3MVG9oNqAtcJCF.FYrBZD8TqSU_jUMWC1ZROD6vy5I54xwL8SjGYVzM9M6Uhhogxy2cfKL3iCKF51jZKd9efk",
+        //     redirectUri: "https://jsforceapp.herokuapp.com/callback.html",
+        //     proxyUrl: "https://node-salesforce-proxy.herokuapp.com/proxy/"
+        // });
+        jsforce.browser.on('connect', function(conn) {
+            // window.close();
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

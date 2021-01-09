@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>GS Litening</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    
+    <!-- /*JS Force*/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.7.0/jsforce.min.js"></script>
+
+    <!-- Handlebars -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    
+    <!-- Main JS -->
+    <script type="text/javascript" src="bundle.js"></script>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-4 sticky-top">
+        <a class="navbar-brand ml-3" href="#">GS Litening</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li> -->
+            <li class="nav-item" data-toggle="modal" data-target="#aboutModal">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="mailto:aevancho@me.com">Contact</a>
+              </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Support Resources</a>
+              <div class="dropdown-menu bg-dark text-light" aria-labelledby="dropdown03">
+                <a class="dropdown-item bg-transparent text-primary" target="_blank" href="https://vmware-gs.lightning.force.com/one/one.app">GS Lightning (SFDC)</a>
+                <a class="dropdown-item bg-transparent text-warning" target="_blank" href="https://sw.awmdm.com/">SaaS Watch</a>
+                <a class="dropdown-item bg-transparent text-warning" target="_blank" href="https://awsw.workspaceone.com/saasutilities/saasaccess">SaaS Access</a>
+                <a class="dropdown-item bg-transparent text-warning" target="_blank" href="https://saaskit.airwatch.local/index.php?tab=awenvs_grid">SaaS Kit</a>
+                <a class="dropdown-item bg-transparent hot-pink" target="_blank" href="https://workflow.airwatch.local/index.php">Workflow</a>
+                <a class="dropdown-item bg-transparent hot-pink" target="_blank" href="https://cn274.awmdm.com/api/help/#!/apis">API Explorer</a>
+                <a class="dropdown-item bg-transparent hot-pink" target="_blank" href="https://ports.vmware.com/home/Workspace-ONE-Access+Workspace-ONE-UEM">WS1 Ports & Protocols</a>
+                <a class="dropdown-item bg-transparent hot-pink" target="_blank" href="https://my.workspaceone.com/">My Workspace ONE</a>
+                <a class="dropdown-item bg-transparent light-blue" target="_blank" href="https://jira-euc.eng.vmware.com/jira/secure/Dashboard.jspa">JIRA</a>
+                <a class="dropdown-item bg-transparent light-blue" target="_blank" href="https://confluence-euc.eng.vmware.com/dashboard.action#all-updates">Confluence</a>
+                <a class="dropdown-item bg-transparent light-blue" target="_blank" href="https://ikb.vmware.com/s/">Knowledge Base</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="javascript:findTicketsSubmit()">
+            <input class="form-control mr-sm-2" type="text" id="TSE" placeholder="Enter Name" aria-label="Enter Name">
+        </form>
+            <!-- <button class="btn btn-outline-secondary mr-2" id="populateCases" type="button">Find Tickets</button> -->
+            <button class="btn btn-outline-secondary mr-2" id="populateCases" type="button">Find Tickets</button>
+            <button id="login-btn" class="btn btn-outline-primary" type="submit">Login</button>
+        </div>
+      </nav>
+
+      <!-- About Modal -->
+        <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header text-warning">
+                <h5 class="modal-title" id="aboutModalLabel">Welcome to GS Litening!</h5>
+
+                </div>
+                <div class="modal-body">
+                GS Lite is exactly what it sounds like: a lightweight version of Saleforce Lightning. GS Lite was built for VMware Workspace ONE Support Engineers wanting a faster, more responsive experience with the GS Lightning platform but without missing all the essentials.</br></br>GS Lite requires a valid "name@vmware.com.gs" credential. Once authenticated, simply enter the name of the TSE whose tickets you want to view and "Find Tickets".
+                </div>
+                <div class="modal-footer">
+                <a href="https://github.com/ace-vmware/GSL" target="_blank" class="btn btn-secondary" role="button" aria-pressed="true"><i class="fab fa-github"></i> Github</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div> <!-- END aboutModal -->
+
+        
+      <!-- email Modal -->
+        <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true" role="dialog">
+          <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Recipient:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text" rows="8"></textarea>
+                </div>
+              </form>
+            </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button id="sendEmailbtn" type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-paper-plane"></i> Send Message</button>
+              </div>
+          </div>
+          </div>
+      </div> <!-- END emailModal -->
+
+      <!-- download Modal -->
+      <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content bg-dark text-white">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title-header">Download Case Attachments</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div id="downloadmodalbody" class="modal-body container-fluid">
+              <div class="row">
+                <div class="col-sm-1">
+                  <div id="spinner" class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <h5></h5>
+                </div>
+                <div class="col-sm-6">
+                  <h5 class="light-green">File Name</h5>
+                </div>
+                <div class="col-sm-5">
+                  <h5 class="warlock-purple">Created Date</h5>
+                </div>
+              </div>
+              <form id="download-list-form">
+              </form>
+              <script id="download-list" type="x-handlebars-template">
+                <div id="{{id}}" class="mx-3">
+                  <div class="row align-baseline">
+                    <div class="col-sm-1 text-center">
+                      <input value="{{LatestPublishedVersionId}}" lpvid="" type="checkbox" class="form-check-input text-center lpvid">
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="{{LatestPublishedVersionId}}">{{Title}}</label>
+                    </div>
+                    <div class="col-sm-5 ml-auto">
+                      <label for="{{LatestPublishedVersionId}}">{{CreatedDate}}</label>
+                    </div>
+                  </div>
+                </div>
+            </script>  
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button id="downloadattachmentsbtn" type="submit" value="Submit" form="download-list-form" class="btn btn-primary">Download</button>
+            </div>
+        </div>
+      </div>
+    </div> <!-- END downloadModal -->
+
+    <!-- Spinner -->
+    <div id="spinnerElem" class="spinner-grow text-secondary" role="status" style="display: none">
+      <span class="sr-only">Loading...</span>
+    </div>
+      
+      <!-- Main -->
+      <div class="container-fluid">
+
+        <!-- CASE -->
+        <div class="row overflow-auto">
+            <div id="case-section" class="col-sm-3">
+              <!-- <h2 class="text-white text-center mb-3" data-toggle="collapse" href="#tickets" role="button" aria-expanded="false" aria-controls="collapsePanel">Case</h2> -->
+              <div id="tickets" class="list-group list-unstyled collapse show">
+                  <script id="tickets-list" type="x-handlebars-template">
+
+                        <div id="{{ Id }}" class="list-group-item mb-3 rounded ticket-list-card bg-dark text-white text-left container-fluid" role="button" tabindex="-1">
+                          <div class="row">
+                            <div class="col-sm-9">
+                              <span>{{ CaseNumber }}:</span></br>
+                              <span>{{ account }}</span>
+                            </div>
+                            <div class="col-sm-3 d-flex justify-content-end align-items-center">
+                              <button title="Reply" class="btn btn-outline-secondary btn-md ml-1 mr-1" data-toggle="modal" data-target="#emailModal" CaseNumber={{ CaseNumber }} GSS_Owner_Email__c={{ GSS_Owner_Email__c }} GSS_Contact_First_Name__c={{ GSS_Contact_First_Name__c }} GSS_Contact_Last_Name__c={{ GSS_Contact_Last_Name__c }} GSS_Contact_Email__c={{ GSS_Contact_Email__c }} data={{ Id }}><i class="fas fa-reply"></i></button>
+                              <button title="Download Case Files" class="btn btn-outline-secondary btn-md download-btn" data-toggle="modal" data-target="#downloadModal" download-id="{{ Id }}"><i class="fas fa-download"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                  </script>
+              </div>
+          </div> <!-- END Cases -->
+            
+            <!-- FEED  -->
+            <div id="feed-section" class="col-sm-6">
+              <!-- <h2 class="text-white text-center mb-3" data-toggle="collapse" href="#feed" role="button" aria-expanded="false" aria-controls="collapsePanel">Feed</h2> -->
+              <div id="feed" class="collapse show">
+                <script id="email-container" type="x-handlebars-template">
+                    <div class="email-box list-group-item mb-4 bg-dark text-white rounded shadow overflow-auto">
+                        <h6 class="light-blue d-inline my-0 py-0">To: </h6><span>{{ ToAddress }}</span></br>
+                        <h6 class="light-orange d-inline my-0 py-0">From: </h6><span>{{ FromAddress }}</span></br>
+                        <h6 class="hot-pink d-inline my-0 py-0">Message Date: </h6><span>{{ MessageDate }}</span>
+                        <p class="my-2 py-0">{{ TextBody }}</p>
+                    </div>
+                </script>
+               </div>
+            </div> <!-- END FEED -->
+            
+
+            <!-- DETAILS -->
+        <div id="details-section" class="col-sm-3">
+          <!-- <h2 class="text-white text-center mb-3" data-toggle="collapse" href="#details" role="button" aria-expanded="false" aria-controls="collapsePanel">Details</h2> -->
+            <ul id="details" class="list-group list-unstyled collapse show">
+                <script id="details-list" type="x-handlebars-template">
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Case Number:</span> {{ CaseNumber }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Case Owner:</span> {{ Case_Owner_Name__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Priority:</span> {{ Priority }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Status:</span> {{ Status }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Problem Category:</span> {{ GSS_Problem_Category__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Subject:</span> {{ Subject }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Description:</span> {{ Description }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Product Name:</span> {{ GSS_Product_Name__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="hot-pink">Idle Time:</span> {{ Idle_time_in_business_days__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="hot-pink">Case Age (Business):</span> {{ Case_Age_Business_Days__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="hot-pink">Case Age (Calendar):</span> {{ Case_Age_Days__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="hot-pink">TTR:</span> {{ Overall_Resolution_Time__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="hot-pink">First Response Date:</span> {{ First_Response_Date__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="hot-pink">First Response Met:</span> {{ GSS_First_Resp_Met__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">Account Name:</span> {{ Account }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">First Name:</span> {{ GSS_Contact_First_Name__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">Last Name:</span> {{ GSS_Contact_Last_Name__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">Contact Phone:</span> {{ GSS_Contact_Phone__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">Contact Email:</span> {{ GSS_Contact_Email__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">Additional Emails:</span> {{ GSS_Additional_Emails__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">Environment:</span> {{ GSS_Environment__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="light-blue">EA Name:</span> {{ EA_Name__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Name of Entitlement:</span> {{ Name_of_Entitlement__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Support Center:</span> {{ GSS_Center__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Case Owner Email:</span> {{ GSS_Owner_Email__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Case Owner Manager Email:</span> {{ GSS_Owner_Manager_Email__c }}</li>
+                    <li class="list-group-item mb-3 rounded bg-dark text-white"><span class="warlock-purple">Id:</span> {{ Id }}</li>
+                </script>
+            </ul>
+        </div>
+
+        </div> <!-- End Row -->
+      </div> <!-- End Container -->
+	<!-- Optional JavaScript; choose one of the two! -->
+	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

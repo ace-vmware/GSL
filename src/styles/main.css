@@ -1,0 +1,95 @@
+:root {
+    /* FONT COLORS */
+    --light-blue: #7ecaea;
+    /* --warlock-purple: #b283d2; */
+    --warlock-purple: #b283d2;
+    --tomato-red: #c8445c;
+    --hot-pink: #F04A82;
+    --yellow-orange: #f2c871;
+    --light-green: #44e576;
+    --lavender-blue: #4577e3;
+    --light-orange: #f6c231;
+    --medium-grey: #656976;
+    --very-light-blue: hsl(199deg 47% 61%);
+}
+
+body {
+    background-color: rgb(28 29 34);
+}
+
+.bg-black {
+    border: solid 1px var(--hot-pink);
+    background-color: #1c1d22 !important;
+}
+
+.ticket-list-card:hover {
+    border: solid 1px var(--hot-pink);
+    background-color: #1c1d22 !important;
+}
+
+.ticket-list-card:focus-within{
+    border: solid 1px var(--hot-pink) !important;
+    background-color: #1c1d22 !important;
+}
+
+
+/* COLOR CLASSES */
+.light-blue {
+    color: var(--light-blue);
+}
+
+.medium-grey {
+    color: var(--medium-grey);
+}
+
+.white {
+    color: white;
+}
+
+.warlock-purple {
+    color: var(--warlock-purple)
+}
+
+.tomato-red {
+    color: var(--tomato-red)
+}
+
+.hot-pink {
+    color: var(--hot-pink)
+}
+
+.yellow-orange {
+    color: var(--yellow-orange)
+}
+
+.light-green {
+    color: var(--light-green)
+}
+
+.lavender-blue {
+    color: var(--lavender-blue)
+}
+
+.light-orange {
+    color: var(--light-orange)
+}
+
+.very-light-blue {
+    color: var(--very-light-blue)
+}
+
+.heavy-dark-blue {
+    color: var(--heavy-dark-blue)
+}
+
+.medium-dark-blue {
+    color: var(--medium-dark-blue)
+}
+
+.border-grey-blue {
+    color: var(--border-grey-blue)
+}
+
+.box-shadow {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
